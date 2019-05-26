@@ -60,7 +60,7 @@ public class SignUpActivity extends AppCompatActivity {
 
             if((signUpResVO.getName().length()!=0)&&(signUpResVO.getPasswd().length()!=0)&&(signUpResVO.getEmail().length()!=0)){
 
-                HttpApi httpApi = HttpProvider.http(ApiConfig.SIGN_IN_URL).create(HttpApi.class);
+                HttpApi httpApi = HttpProvider.http(ApiConfig.BASE_URL).create(HttpApi.class);
                 httpApi.addUser(signUpResVO.getName(),signUpResVO.getPasswd(),signUpResVO.getEmail())
                         .subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread())

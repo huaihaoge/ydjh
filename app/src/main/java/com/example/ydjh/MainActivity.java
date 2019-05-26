@@ -43,22 +43,20 @@ public class MainActivity extends AppCompatActivity {
         initView();
 
         ListNewsResVO resVO = new ListNewsResVO();
-        resVO.setType("top");
-        resVO.setKey("a1a755458cc22f129942b34904feb820");
 
         Intent intent = getIntent();
         String message = intent.getStringExtra(NavigationActivity.MESSAGE);
-        String url = ApiConfig.NEWS_URL;
+        String url = ApiConfig.BASE_URL;
+
         if (message != null) {
             if (message.equals("FISH")) {
-                url = ApiConfig.BASE_URL;
+              getFishsList(url);
             } else if (message.equals("NEWS")) {
-                url = ApiConfig.NEWS_URL;
+                getNewsList(url);
             } else {
-                url = ApiConfig.NEWS_URL;
+
             }
         }
-        getNewsList(url, resVO);
     }
 
     private void initData() {
@@ -83,9 +81,40 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void getNewsList(String url, ListNewsResVO resVO) {
+    private void getNewsList(String url) {
         HttpApi httpApi = HttpProvider.http(url).create(HttpApi.class);
-        httpApi.newsList(resVO.getType(), resVO.getKey())
+        httpApi.newsLists()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<ListNewsVO>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(ListNewsVO resp) {
+                        listNewsVO = resp;
+                        newsItemListAdapter = new NewsItemListAdapter(MainActivity.this, resp);
+                        rvNews.setAdapter(newsItemListAdapter);
+                        initListener();
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
+    }
+
+    private void getFishsList(String url) {
+        HttpApi httpApi = HttpProvider.http(url).create(HttpApi.class);
+        httpApi.newsFish()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<ListNewsVO>() {

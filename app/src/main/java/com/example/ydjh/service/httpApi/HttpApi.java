@@ -20,4 +20,10 @@ public interface HttpApi {
     @GET("/demo/add")
     Observable<SignInVO> addUser(@Query("name") String name , @Query("passwd") String passwd,@Query("email") String email);
 
+    @GET("/demo/listNews")
+    Observable<ListNewsVO> newsLists();
+
+    @GET("/demo/listFish")
+    Observable<ListNewsVO> newsFish();
+
 }

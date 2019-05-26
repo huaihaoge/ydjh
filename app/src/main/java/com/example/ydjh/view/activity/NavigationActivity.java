@@ -13,19 +13,15 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.EditText;
 
 import com.example.ydjh.MainActivity;
 import com.example.ydjh.R;
-import com.example.ydjh.bean.User;
 
 
 public class NavigationActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
 
-    public static final String USER_NAME_SINGIN = "com.example.ydjh.username";
-    public static final String USER_PASSWD_SINGIN = "com.example.ydjh.passwd";
     public static final String MESSAGE = "com.example.ydjh.NEWS";
 
 
@@ -104,10 +100,10 @@ public class NavigationActivity extends AppCompatActivity
             intent.putExtra(MESSAGE, "FISH");
             startActivity(intent);
         } else if (id == R.id.nav_slideshow) {
-//            intent.putExtra(MESSAGE,"NEWS");
+            intent.putExtra(MESSAGE, "NEWS");
             startActivity(intent);
         } else if (id == R.id.nav_manage) {
-            intent.putExtra(MESSAGE,"NEWS");
+            intent.putExtra(MESSAGE, "NEWS");
             startActivity(intent);
         } else if (id == R.id.nav_longin) {
             startActivity(singin);
@@ -120,26 +116,5 @@ public class NavigationActivity extends AppCompatActivity
         return true;
     }
 
-    public void singIn(View view) {
-        Intent intent = new Intent(this, SignInActivity.class);
-        User user = new User();
-        user.setName(((EditText) findViewById(R.id.editTextUserName)).getText().toString());
-        user.setPasswd(((EditText) findViewById(R.id.editTextUserPasswd)).getText().toString());
-
-        intent.putExtra(USER_NAME_SINGIN, user.getName());
-        intent.putExtra(USER_PASSWD_SINGIN, user.getPasswd());
-        startActivity(intent);
-    }
-
-    public void singUp(View view) {
-        Intent intent = new Intent(this, SignUpActivity.class);
-//        User user = new User();
-////        user.setName(((EditText) findViewById(R.id.editTextUserName)).getText().toString());
-////        user.setPasswd(((EditText) findViewById(R.id.editTextUserPasswd)).getText().toString());
-////
-////        intent.putExtra(USER_NAME_SINGIN, user.getName());
-////        intent.putExtra(USER_PASSWD_SINGIN,user.getPasswd());
-        startActivity(intent);
-    }
 
 }
