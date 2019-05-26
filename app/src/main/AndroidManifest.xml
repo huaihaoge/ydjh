@@ -40,7 +40,7 @@
         <activity android:name=".view.activity.NewsDetailsActivity" />
 
         <activity
-            android:name=".view.activity.SingInActivity"
+            android:name=".view.activity.SignInActivity"
             android:parentActivityName=".MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -48,7 +48,7 @@
         </activity>
 
         <activity
-            android:name=".view.activity.SingUpActivity"
+            android:name=".view.activity.SignUpActivity"
             android:parentActivityName=".view.activity.NavigationActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"

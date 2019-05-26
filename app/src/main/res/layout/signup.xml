@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.activity.SingInActivity">
+    tools:context=".view.activity.SignInActivity">
     app:layout_behavior="@string/appbar_scrolling_view_behavior">
     <EditText
-        android:id="@+id/editTextUserNameSingUp"
+        android:id="@+id/editTextUserNameSignUp"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
@@ -18,13 +18,13 @@
         android:hint="用户名"
         android:inputType="textPersonName"
         android:text=""
-        app:layout_constraintBottom_toTopOf="@+id/editTextUserPasswdSingUp"
+        app:layout_constraintBottom_toTopOf="@+id/editTextUserPasswdSignUp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/editTextUserPasswdSingUp"
+        android:id="@+id/editTextUserPasswdSignUp"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
@@ -40,7 +40,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/editTextUserEmailSingUp"
+        android:id="@+id/editTextUserEmailSignUp"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
@@ -53,16 +53,16 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextUserPasswdSingUp" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextUserPasswdSignUp" />
 
     <Button
-        android:id="@+id/SingUp"
+        android:id="@+id/SignUp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="180dp"
+        android:layout_marginTop="88dp"
         android:layout_marginEnd="160dp"
         android:text="注册"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/editTextUserPasswdSingUp" />
+        app:layout_constraintTop_toTopOf="@+id/editTextUserEmailSignUp" />
 
 </android.support.constraint.ConstraintLayout>

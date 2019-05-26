@@ -11,6 +11,7 @@ import com.example.ydjh.adapter.NewsItemListAdapter;
 import com.example.ydjh.config.ApiConfig;
 import com.example.ydjh.service.httpApi.HttpApi;
 import com.example.ydjh.service.httpProvider.HttpProvider;
+import com.example.ydjh.view.activity.NavigationActivity;
 import com.example.ydjh.view.activity.NewsDetailsActivity;
 import com.example.ydjh.vo.request.news.ListNewsResVO;
 import com.example.ydjh.vo.response.news.ListNewsVO;
@@ -45,8 +46,19 @@ public class MainActivity extends AppCompatActivity {
         resVO.setType("top");
         resVO.setKey("a1a755458cc22f129942b34904feb820");
 
-        getNewsList(resVO);
-
+        Intent intent = getIntent();
+        String message = intent.getStringExtra(NavigationActivity.MESSAGE);
+        String url = ApiConfig.NEWS_URL;
+        if (message != null) {
+            if (message.equals("FISH")) {
+                url = ApiConfig.BASE_URL;
+            } else if (message.equals("NEWS")) {
+                url = ApiConfig.NEWS_URL;
+            } else {
+                url = ApiConfig.NEWS_URL;
+            }
+        }
+        getNewsList(url, resVO);
     }
 
     private void initData() {
@@ -71,8 +83,8 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void getNewsList(ListNewsResVO resVO) {
-        HttpApi httpApi = HttpProvider.http(ApiConfig.BASE_URL).create(HttpApi.class);
+    private void getNewsList(String url, ListNewsResVO resVO) {
+        HttpApi httpApi = HttpProvider.http(url).create(HttpApi.class);
         httpApi.newsList(resVO.getType(), resVO.getKey())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())

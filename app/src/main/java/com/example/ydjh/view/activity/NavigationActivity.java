@@ -26,6 +26,8 @@ public class NavigationActivity extends AppCompatActivity
 
     public static final String USER_NAME_SINGIN = "com.example.ydjh.username";
     public static final String USER_PASSWD_SINGIN = "com.example.ydjh.passwd";
+    public static final String MESSAGE = "com.example.ydjh.NEWS";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -92,21 +94,24 @@ public class NavigationActivity extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
 
         Intent intent = new Intent(this, MainActivity.class);
-        Intent login = new Intent(this,LoginActivity.class);
-        Intent singin = new Intent(this,SingInActivity.class);
-        Intent singup = new Intent(this,SingUpActivity.class);
+        Intent login = new Intent(this, LoginActivity.class);
+        Intent singin = new Intent(this, SignInActivity.class);
+        Intent singup = new Intent(this, SignUpActivity.class);
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-      if (id == R.id.nav_gallery) {
+        if (id == R.id.nav_gallery) {
+            intent.putExtra(MESSAGE, "FISH");
             startActivity(intent);
         } else if (id == R.id.nav_slideshow) {
+//            intent.putExtra(MESSAGE,"NEWS");
             startActivity(intent);
         } else if (id == R.id.nav_manage) {
+            intent.putExtra(MESSAGE,"NEWS");
             startActivity(intent);
-        } else if (id == R.id.nav_share) {
+        } else if (id == R.id.nav_longin) {
             startActivity(singin);
-        } else if (id == R.id.nav_send) {
+        } else if (id == R.id.nav_singup) {
             startActivity(singup);
         }
 
@@ -116,18 +121,18 @@ public class NavigationActivity extends AppCompatActivity
     }
 
     public void singIn(View view) {
-        Intent intent = new Intent(this, SingInActivity.class);
+        Intent intent = new Intent(this, SignInActivity.class);
         User user = new User();
         user.setName(((EditText) findViewById(R.id.editTextUserName)).getText().toString());
         user.setPasswd(((EditText) findViewById(R.id.editTextUserPasswd)).getText().toString());
 
         intent.putExtra(USER_NAME_SINGIN, user.getName());
-        intent.putExtra(USER_PASSWD_SINGIN,user.getPasswd());
+        intent.putExtra(USER_PASSWD_SINGIN, user.getPasswd());
         startActivity(intent);
     }
 
     public void singUp(View view) {
-        Intent intent = new Intent(this, SingUpActivity.class);
+        Intent intent = new Intent(this, SignUpActivity.class);
 //        User user = new User();
 ////        user.setName(((EditText) findViewById(R.id.editTextUserName)).getText().toString());
 ////        user.setPasswd(((EditText) findViewById(R.id.editTextUserPasswd)).getText().toString());

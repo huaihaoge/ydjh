@@ -15,18 +15,18 @@
             android:title="新闻咨询" />
         <item
             android:id="@+id/nav_manage"
-            android:icon="@drawable/ic_menu_manage"
-            android:title="设置" />
+            android:icon="@drawable/ic_brightness_low_black_24dp"
+            android:title="天气查询" />
     </group>
 
-    <item android:title="Communicate">
+    <item android:title="设置">
         <menu>
             <item
-                android:id="@+id/nav_share"
+                android:id="@+id/nav_longin"
                 android:icon="@drawable/ic_account_circle_black_24dp"
                 android:title="登录" />
             <item
-                android:id="@+id/nav_send"
+                android:id="@+id/nav_singup"
                 android:icon="@drawable/ic_account_box_black_24dp"
                 android:title="注册" />
         </menu>
