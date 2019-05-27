@@ -62,7 +62,7 @@ public class SignInActivity extends AppCompatActivity {
 
             if((signInResVO.getName().length()!=0)&&(signInResVO.getPasswd().length()!=0)){
 
-                HttpApi httpApi = HttpProvider.http(ApiConfig.SIGN_IN_URL).create(HttpApi.class);
+                HttpApi httpApi = HttpProvider.http(ApiConfig.BASE_URL).create(HttpApi.class);
                 httpApi.user(signInResVO.getName(),signInResVO.getPasswd())
                         .subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread())
